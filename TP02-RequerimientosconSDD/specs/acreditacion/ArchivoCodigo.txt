@@ -1,1 +1,3 @@
 Este archivo simula el avance en el Issue de acreditación. 
+
+Cambio que simula la finalización del issue.
