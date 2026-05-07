@@ -1,1 +1,3 @@
 Avance del issue simulado.
+
+Cambio simulando la finalización del issue.
