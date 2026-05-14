@@ -1,3 +1,5 @@
 Este archivo representa la simulacion del codigo del modulo Encuestas.
 
 Avance del issue.
+
+Cambio en el archivo simulando la finalizacion del issue.
