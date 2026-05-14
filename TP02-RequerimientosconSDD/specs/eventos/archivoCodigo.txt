@@ -1,0 +1,3 @@
+Este archivo representa la simulacion del codigo del modulo eventos.
+
+Avance en el issue de eventos.
