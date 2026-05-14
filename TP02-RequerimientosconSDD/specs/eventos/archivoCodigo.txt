@@ -1,3 +1,5 @@
 Este archivo representa la simulacion del codigo del modulo eventos.
 
 Avance en el issue de eventos.
+
+Cambio en el archivito que simula la finalizacion del ISSUE #11.
