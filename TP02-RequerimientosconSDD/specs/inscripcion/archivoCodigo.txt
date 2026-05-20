@@ -1,0 +1,3 @@
+Simulación de avance del issue.
+
+Cambio simulando el cierre del issue.
