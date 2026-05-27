@@ -77,10 +77,18 @@ Este módulo gestiona el proceso de acreditación (registro de asistencia) de pa
 **Criterios de aceptación:**
 
 1. El participante puede ver todos sus certificados emitidos.
+
 2. Cada certificado muestra: tipo, evento, fecha de emisión, código de verificación.
-3. Se puede descargar el PDF del certificado.
-4. El PDF incluye: nombre del participante, nombre del evento, fechas, tipo de certificado, código de verificación.
-5. Si no se generaron certificados aún, se indica que no hay certificados disponibles.
+
+3. Se puede descargar el PDF del certificado mediante el endpoint correspondiente.
+
+4. [OWASP] Al solicitar la descarga (ej. GET /certificates/:id/download), el sistema debe validar estrictamente que el ID del certificado solicitado pertenezca al ID del usuario autenticado en el token JWT.
+
+5. [OWASP] Si un usuario intenta acceder a un ID de certificado que pertenece a otro usuario, el sistema debe denegar el acceso devolviendo un error HTTP 403 (Forbidden) y registrar el intento de acceso no autorizado en los logs de seguridad.
+
+6. [OWASP] En lugar de utilizar IDs numéricos secuenciales predecibles (autoincrementales) en las URLs públicas de descarga, se debe utilizar el verificationCode (UUID) como identificador en la ruta para mitigar la enumeración de recursos.
+
+7. El PDF incluye: nombre del participante, nombre del evento, fechas, tipo de certificado, código de verificación.
 
 ### HU-CERT-03: Verificar Validez de Certificado
 

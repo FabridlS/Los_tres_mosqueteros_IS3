@@ -38,7 +38,7 @@ Este módulo gestiona el registro, autenticación y administración de usuarios 
 5. El registro retorna un access token y refresh token automáticamente.
 6. Si el email ya existe, retornar error EMAIL_ALREADY_EXISTS (409).
 
-### HU-AUTH-02: Iniciar Sesión
+### HU-AUTH-02: Iniciar Sesión (Reforzada)
 
 **Como** usuario registrado, **quiero** iniciar sesión con mis credenciales **para** acceder a la plataforma.
 
@@ -46,10 +46,11 @@ Este módulo gestiona el registro, autenticación y administración de usuarios 
 
 1. El usuario ingresa email y contraseña.
 2. Si las credenciales son correctas, se retorna access token y refresh token.
-3. Si las credenciales son incorrectas, retornar error INVALID_CREDENTIALS (401).
-4. El access token expira en 15 minutos.
-5. El refresh token expira en 7 días.
-6. El refresh token se almacena en cookie httpOnly.
+3. [OWASP] Si las credenciales son incorrectas, el sistema debe retornar un mensaje de error genérico y uniforme (ej. "Credenciales inválidas"), sin revelar si el error fue en el email o en la contraseña para evitar la enumeración de usuarios. Retornar error INVALID_CREDENTIALS (401).
+4. [OWASP] El sistema debe bloquear temporalmente la cuenta (Account Lockout) por 15 minutos tras 5 intentos de inicio de sesión fallidos consecutivos.
+5. [OWASP] Durante el periodo de bloqueo, cualquier intento de inicio de sesión (incluso con la contraseña correcta) debe ser rechazado con el mismo mensaje genérico para no dar pistas al atacante.
+6. El access token expira en 15 minutos.
+7. El refresh token expira en 7 días y se almacena en una cookie httpOnly y Secure.
 
 ### HU-AUTH-03: Renovar Token de Acceso
 
