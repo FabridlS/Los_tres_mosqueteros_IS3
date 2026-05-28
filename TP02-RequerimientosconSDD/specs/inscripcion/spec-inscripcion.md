@@ -74,6 +74,9 @@ Este módulo gestiona el proceso de inscripción de participantes a eventos acad
 3. Se registra quién realizó la inscripción (el staff/organizador).
 4. Se pueden inscribir múltiples personas a la vez (carga masiva por emails).
 5. Si el email no corresponde a un usuario registrado, se crea la inscripción pero se marca como "pendiente de registro" (el usuario debe registrarse para confirmarla).
+6. [OWASP] El endpoint de carga masiva debe implementar un límite estricto en la cantidad de registros por petición (Rate Limiting y Payload Limit) para prevenir ataques de denegación de servicio (DoS) por agotamiento de recursos en el servidor de base de datos.
+7. [OWASP] Cada dirección de correo electrónico recibida en el lote debe ser validada individualmente mediante una expresión regular robusta y segura (evitando ReDoS) antes de interactuar con Prisma, bloqueando caracteres maliciosos de inyección SQL/NoSQL.
+8. [OWASP] En las respuestas de error de la carga masiva, no se deben revelar detalles internos del esquema de la base de datos ni indicar de forma explícita qué cuentas existen o no en el sistema a menos que sea estrictamente necesario para el flujo del staff, previniendo la enumeración masiva de usuarios externos.
 
 ### HU-INS-05: Ver Mis Inscripciones
 
