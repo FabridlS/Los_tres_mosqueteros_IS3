@@ -94,6 +94,8 @@ Este módulo gestiona el ciclo de vida completo de los eventos académicos en la
 3. Si el evento ya fue aprobado, cualquier edición vuelve a ponerlo en estado "pendiente" de re-aprobación.
 4. Si el evento ya finalizó, no se puede editar.
 5. Las mismas validaciones de creación aplican a la edición.
+6. **[OWASP]** Al intentar actualizar el evento, el backend debe validar estrictamente el control de acceso a nivel de objeto (IDOR/BOLA), comprobando que el identificador del evento modificado pertenezca legítimamente al usuario autenticado. En caso de inconsistencia, denegar el acceso devolviendo un error HTTP 403 (Forbidden).
+7. **[OWASP]** Sanitizar y validar las entradas de la actualización, comprobando específicamente que el campo de enlace de transmisión (streamUrl) cumpla con un formato estricto de URL segura (lista blanca de esquemas como `https://`) para evitar ataques de tipo Server-Side Request Forgery (SSRF) o inyecciones mediante esquemas maliciosos como `javascript:`.
 
 ### HU-EVT-07: Cancelar un Evento (Organizador)
 
