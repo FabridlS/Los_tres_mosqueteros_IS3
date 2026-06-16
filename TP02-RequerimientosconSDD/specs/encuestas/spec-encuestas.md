@@ -77,6 +77,8 @@ Este módulo gestiona el feedback post-evento de los participantes. Permite a lo
 4. Un comentario tiene: texto (obligatorio, max 1000 caracteres), rating opcional (1-5), y autor.
 5. El comentario se publica inmediatamente y es visible públicamente.
 6. Un usuario puede dejar solo un comentario por evento.
+7. **[OWASP]** El sistema debe sanitizar de forma estricta el campo de texto del comentario en el backend para prevenir ataques de Cross-Site Scripting (Stored XSS), neutralizando o escapando cualquier etiqueta HTML o script ejecutable antes de persistirlo en la base de datos
+8. **[OWASP]** Implementar un control de mitigación contra inyecciones SQL/NoSQL en la validación de los datos recibidos (texto y rating), utilizando consultas parametrizadas a través del ORM/ODM correspondiente.
 
 ### HU-ENC-05: Ver Comentarios de un Evento
 
