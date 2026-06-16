@@ -54,6 +54,8 @@ Este módulo gestiona la generación de informes estadísticos de eventos y la g
 2. El diseño es limpio y legible.
 3. El PDF se genera on-demand (no se almacena).
 4. El nombre del archivo sigue el patrón: `agenda_{titulo_evento}.pdf`.
+5. [OWASP] Al renderizar datos dinámicos dentro del PDF con pdfkit (como el título del evento, nombres de sesiones o disertantes), el backend debe sanitizar rigurosamente los strings para neutralizar cualquier intento de inyección de scripts o caracteres de control que puedan corromper el motor de generación de PDF o provocar ataques de inyección si el contenido se previsualiza en el navegador.
+6. [OWASP] El parámetro titulo_evento utilizado para nombrar el archivo de salida debe ser sanitizado eliminando caracteres especiales (../, \, /, null bytes) para prevenir vulnerabilidades de Path Traversal o manipulación de cabeceras HTTP (Content-Disposition).
 
 ### HU-INF-04: Dashboard del Organizador
 
